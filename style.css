@@ -1,0 +1,16 @@
+/*index.html*/
+#imagem1 img {
+    width: 300px;
+}
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 20px;
+}
+nav a {
+    text-decoration: none;
+    color: black;
+}
+nav a:hover {
+    color: purple;
+}
