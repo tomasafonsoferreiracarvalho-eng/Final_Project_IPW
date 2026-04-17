@@ -6,18 +6,27 @@ nav ul {
     display: flex;
     list-style: none;
     gap: 20px;
+    justify-content: center; /*garantir sempre o centro para já que já tinha o flex*/
+    padding: 10px 0; /*se não me engano dou padding cima e baixo e nada lados */
 }
 nav a {
     text-decoration: none;
     color: #f1f1f1;
+    transition: 0.3s;
 }
 nav a:hover {
     color: purple;
 }
 /*tudo*/
 * {
-    text-align: justify;
+    text-align: justify; /*pode vir a dar problemas, pode criar espaços falsos CUIDADO */
     font-family: Georgia, 'Times New Roman', Times, serif;
+    scroll-behavior: smooth;
+    /*background-color: #141120;*/
+}
+body {
+     background-color: #121212;
+    color: #f1f1f1;
 }
 header {
     display: flex;
@@ -25,8 +34,52 @@ header {
     align-items: center;
 }
 .backnav {
-    background-color: black;
+    background-color: #1e1e1e;
     width: 100%;
     display: flex;
     justify-content: center;
+    margin-bottom: 10px;
 }
+.title {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: 0.3s;
+}
+.title:hover {
+    background-color: #141120;
+    color:#f1f1f1;
+}
+/*jogos.html*/
+.pesquisar-jogos input {
+    border:2px solid #444;
+    background-color: #1e1e1e;
+    color: #f1f1f1;
+    padding: 8px; /*fica mais grosso, mais bonito e notavel */
+    border-radius: 5px; /*conforme o dia muda */
+}
+/*sobre.html*/
+#pag-pessoal a{
+    text-decoration: none;
+    color:deeppink
+}
+.tecnologias {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 20px;
+}
+.tec-utili {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.tec-utili img {
+    width: 50px;
+    transition: 0.3s;
+}
+.tec-utili img:hover {
+    transform: scale(1.2);
+}
+
