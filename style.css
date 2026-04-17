@@ -19,7 +19,7 @@ nav a:hover {
 }
 /*tudo*/
 * {
-    text-align: justify; /*pode vir a dar problemas, pode criar espaços falsos CUIDADO */
+    text-align: justify; /*pode vir a dar problemas, pode criar espaços falsos CUIDADO melhor passar só para p {text-align:justify;}? */
     font-family: Georgia, 'Times New Roman', Times, serif;
     scroll-behavior: smooth;
     /*background-color: #141120;*/
@@ -51,6 +51,14 @@ header {
     background-color: #141120;
     color:#f1f1f1;
 }
+section {
+    margin-bottom: 20px;
+    max-width:900px;
+    margin: 0 auto 20px auto;
+    /*border-bottom: 1px solid #333;*/
+    /*padding-bottom: 20px;*/
+}
+
 /*jogos.html*/
 .pesquisar-jogos input {
     border:2px solid #444;
@@ -59,10 +67,21 @@ header {
     padding: 8px; /*fica mais grosso, mais bonito e notavel */
     border-radius: 5px; /*conforme o dia muda */
 }
+section h1 {
+    margin-bottom: 10px;
+}
+section h3 {
+    margin-top: 20px;
+    color: #a259ff;
+}
 /*sobre.html*/
 #pag-pessoal a{
     text-decoration: none;
-    color:deeppink
+    color:deeppink;
+    transition: 0.3s;
+}
+#pag-pessoal a:hover {
+    opacity: 0.7; /*para já que aprendi no curso do codecademy temos de usar*/
 }
 .tecnologias {
     display: flex;
@@ -81,5 +100,16 @@ header {
 }
 .tec-utili img:hover {
     transform: scale(1.2);
+    filter: drop-shadow(0 0 5px #a259ff);
 }
-
+#ipt a{
+    text-decoration: none;
+    color: green;
+    transition: 0.3s;
+}
+#ipt a:hover {
+    opacity: 0.7;
+}
+#busli {
+    font-style: italic;
+}
