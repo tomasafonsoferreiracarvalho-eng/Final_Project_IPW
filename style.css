@@ -17,6 +17,10 @@ nav a {
 nav a:hover {
     color: purple;
 }
+#funcionalidades li {
+    margin: 20px;
+    font-size: medium;
+}
 /*tudo*/
 * {
     text-align: justify; /*pode vir a dar problemas, pode criar espaços falsos CUIDADO melhor passar só para p {text-align:justify;}? */
@@ -48,15 +52,15 @@ header {
     transition: 0.3s;
 }
 .title:hover {
-    background-color: #141120;
+    background-color: grey;
     color:#f1f1f1;
 }
 section {
     margin-bottom: 20px;
     max-width:900px;
     margin: 0 auto 20px auto;
-    /*border-bottom: 1px solid #333;*/
-    /*padding-bottom: 20px;*/
+    border-bottom: 1px solid #333;
+    padding-bottom: 20px;
 }
 
 /*jogos.html*/
