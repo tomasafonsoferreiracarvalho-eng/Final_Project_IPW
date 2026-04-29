@@ -1,7 +1,5 @@
 /*index.html*/
-#imagem1 img {
-    width: 300px;
-}
+/*guardar emojis ahahaha ➕ ✏️*/
 nav ul {
     display: flex;
     list-style: none;
@@ -23,7 +21,7 @@ nav a:hover {
 }
 /*tudo*/
 * {
-    text-align: justify; /*pode vir a dar problemas, pode criar espaços falsos CUIDADO melhor passar só para p {text-align:justify;}? */
+    text-align: left; /*pode vir a dar problemas, pode criar espaços falsos CUIDADO melhor passar só para p {text-align:justify;}? */
     font-family: Georgia, 'Times New Roman', Times, serif;
     scroll-behavior: smooth;
     /*background-color: #141120;*/
@@ -116,4 +114,149 @@ section h3 {
 }
 #busli {
     font-style: italic;
+}
+.hidden { 
+    display: none !important;
+}
+#btn-adicionar-toggle {
+    display: block;
+    margin: 0 auto;
+}
+#adicionar-jogos {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 400px;
+}
+#games-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+.card-jogo {
+    background-color: #1e1e1e;
+    border-radius: 10px;
+    padding: 10px;
+    width: 200px;
+    transition: 0.3s;
+}
+.card-jogo:hover {
+    transform: translateY(-5px); /*quando o rato esta em cima move o eixo vertical*/
+    border: 1px solid #a259ff;
+}
+.card-jogo img {
+    width: 100%;
+    height: 200px;
+    object-fit: contain;
+    border-radius: 10px 10px 0 0;
+}
+.card-jogo h3 {
+    margin-top: 8px;
+    font-size: 1rem;
+    color: #f1f1f1;
+}
+.card-jogo span, .card-jogo p {
+    color: #aaa;
+    font-size: 0.85rem;
+}
+.card-jogo span { /*acho que fica com aparencia mais bonita*/
+    display: block;
+}
+        /*filtros*/
+#filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+}
+#filters button {
+    background-color: #1e1e1e;
+    color: #f1f1f1;
+    border: 1px solid #444;
+    padding: 6px 14px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+#filters button:hover, #filters button.ativo {
+    background-color: #a259ff;
+    border-color: #a259ff;
+}
+        /*pesquisa*/
+.pesquisar-jogos {
+    display: flex;
+    justify-content: center;
+}
+.pesquisar-jogos input {
+    width: 100%;
+    max-width: 400px;
+}
+        /*por causa dos telemoveis*/
+@media (max-width: 600px) {
+    .card-jogo {
+        width: 100%;
+    }
+    #games-container {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+#adicionar-jogos input, #adicionar-jogos select {  /*inputs mais bonitos*/
+    background-color: #1e1e1e;
+    border: 1px solid #444;
+    color: #f1f1f1;
+    padding: 8px;
+    border-radius: 5px;
+}
+#adicionar-jogos button {  /*botao adicionar*/
+    background-color: #a259ff;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+#adicionar-jogos button:hover { 
+    background-color: #7c3aed;
+}
+#filters-plataforma {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+}
+#filters-plataforma button {
+    background-color: #1e1e1e;
+    color: #f1f1f1;
+    border: 1px solid #444;
+    padding: 6px 14px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+#filters-plataforma button:hover, #filters-plataforma button.ativo {
+    background-color: #a259ff;
+    border-color: #a259ff;
+}
+/*botton editar*/
+.card-jogo button {
+    margin-top: 8px;
+    background-color: transparent;
+    color: #a259ff;
+    border: 1px solid #a259ff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+    font-size: 0.85rem;
+}
+.card-jogo button:hover {
+    background-color: #a259ff;
+    color: #fff;
+}
+#adicionar-jogos select[multiple] { /*fica mais fofinho ahahah*/
+    height: 120px;
 }

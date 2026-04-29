@@ -29,15 +29,45 @@
         <button data-genero="acao">Ação</button>
         <button data-genero="desporto">Desporto</button>
         <button data-genero="rpg">RPG</button>
+        <button data-genero="aventura">Aventura</button>
+        <button data-genero="historia">Historia</button>
+    </section>
+    <section id="filters-plataforma">
         <button data-plataforma="pc">PC</button>
         <button data-plataforma="ps4">PS4</button>
         <button data-plataforma="ps5">PS5</button>
         <button data-plataforma="xbox">XBOX</button>
+        <button data-plataforma="psp">PSP</button>
+        <button data-plataforma="nintendo">Nintendo Switch</button>
+        <button data-plataforma="ps3">PS3</button>
+    </section>
+    <section id="toggle-section">
+        <button id="btn-adicionar-toggle">Adicionar Jogo</button>
+    </section>
+    <section id="adicionar-jogos" class="hidden">
+        <h3>Adicionar Jogos</h3>
+        <input type="text" id="input-nome" placeholder="Nome">
+        <input type="file" id="input-imagem" accept="image/*">
+        <select id="input-genero" multiple>
+            <option value="acao">Ação</option>
+            <option value="rpg">RPG</option>
+            <option value="desporto">Desporto</option>
+            <option value="aventura">Aventura</option>
+            <option value="historia">Historia</option>
+        </select>
+        <input type="text" id="input-plataforma" placeholder="Plataformas (ex: pc, ps5)">
+        <input type="number" id="input-ano" placeholder="Ano">
+        <input type="text" id="input-descricao" placeholder="Descrição">
+        <input type="number" id="input-rating" placeholder="Rating (0-10)" step="0.1" min="0" max="10">
+        <button onclick="submeterJogo()">Adicionar</button>
     </section>
     <section id="games-container">
+    
+
+
 
     </section>
-    <script src="script.js"></script>
+    <script src="scriptJogos.js"></script>
     <footer>
         <p>Copyright Tomás Carvalho</p>
     </footer>
