@@ -1,5 +1,5 @@
 /*index.html*/
-/*guardar emojis ahahaha ➕ ✏️*/
+/*guardar emojis ahahaha ➕ ✏️ ✖ ✖*/
 nav ul {
     display: flex;
     list-style: none;
@@ -259,4 +259,17 @@ section h3 {
 }
 #adicionar-jogos select[multiple] { /*fica mais fofinho ahahah*/
     height: 120px;
+}
+/*pop up de erro*/
+#popup {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #333;
+    color: white;
+    padding: 20px 40px;
+    border-radius: 10px;
+    z-index: 999;
+    text-align: center;
 }

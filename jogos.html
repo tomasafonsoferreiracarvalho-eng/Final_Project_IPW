@@ -45,7 +45,7 @@
         <button id="btn-adicionar-toggle">Adicionar Jogo</button>
     </section>
     <section id="adicionar-jogos" class="hidden">
-        <h3>Adicionar Jogos</h3>
+        <h3 id="form-titulo">Adicionar Jogos</h3>
         <input type="text" id="input-nome" placeholder="Nome">
         <input type="file" id="input-imagem" accept="image/*">
         <select id="input-genero" multiple>
@@ -56,7 +56,7 @@
             <option value="historia">Historia</option>
         </select>
         <input type="text" id="input-plataforma" placeholder="Plataformas (ex: pc, ps5)">
-        <input type="number" id="input-ano" placeholder="Ano">
+        <input type="number" id="input-ano" placeholder="Ano" step=""0.1 min="1900">
         <input type="text" id="input-descricao" placeholder="Descrição">
         <input type="number" id="input-rating" placeholder="Rating (0-10)" step="0.1" min="0" max="10">
         <button onclick="submeterJogo()">Adicionar</button>
@@ -71,5 +71,9 @@
     <footer>
         <p>Copyright Tomás Carvalho</p>
     </footer>
+    <div id="popup" class="hidden">
+        <p id="popup-mensagem"></p>
+        <button onclick="fecharPopup()">OK</button>
+    </div>
 </body>
 </html>

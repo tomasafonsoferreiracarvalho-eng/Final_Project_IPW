@@ -94,13 +94,13 @@ document.querySelectorAll("#filters-plataforma [data-plataforma]").forEach(btn =
 
 /*----------------------(())--------------------*//*mais um bug encontrado quando estou a procura de um jogo, caso esteja num tipod e platafroma que
 tenha o jogo e passar para o genero que tenho o mesmo eles mostram o jogo mas caso vá para um gen que n o tenha e dep para o tipo que ele tem
-fica void, ou seja, vazio, como se n existisse, isso tbm +e um problema com os filtros*/
+fica void, ou seja, vazio, como se n existisse, isso tbm e um problema com os filtros*/
 
 // Os 3 mais recentes
 const recentes = [...jogos].sort((a, b) => b.ano - a.ano).slice(0, 3);
 // Top 5 por rating
 const top10 = [...jogos].sort((a, b) => b.rating - a.rating).slice(0, 5);
-
+/*os 3 pontos criam uma copia do array é uma especie de espelhamento, o sort altera a array original, ent o ... serve para n mexer diretamente no orig*/
 /*----------------------(())--------------------*/
 
 function submeterJogo() {
@@ -112,12 +112,16 @@ function submeterJogo() {
   const descricao = document.getElementById("input-descricao").value;
   const rating = document.getElementById("input-rating").value;
 
-  if (rating < 0 || rating > 10) {
-    alert("O rating tem de ser entre 0 e 10!");
+  if (rating !== "" && (rating < 0 || rating > 10)) {
+    mostrarPopup("O rating tem de ser entre 0 e 10!");
     return;
   }
 
   if (jogoAEditar) {
+    if (!nome || !genero || !plataforma || !ano) {
+        mostrarPopup("Preenche pelo menos o nome, género, plataforma e ano!");
+        return;
+    }
     const index = jogos.findIndex(j => j.id === jogoAEditar);
     jogos[index].nome = nome;
     jogos[index].genero = genero.split(",").map(p => p.trim());
@@ -139,14 +143,14 @@ function submeterJogo() {
         renderizarJogos(jogos);
     }
 
-    jogoAEditar = null;
     document.getElementById("adicionar-jogos").classList.add("hidden");
-    document.getElementById("btn-adicionar-toggle").textContent = "➕ Adicionar Jogo";
+    document.getElementById("btn-adicionar-toggle").textContent = "Adicionar Jogo";
+    limparFormulario();
     return;
   }   
 
   if (!nome || !genero || !plataforma || !ano) {
-    alert("Preenche pelo menos o nome, género, plataforma e ano!");
+    mostrarPopup("Preenche pelo menos o nome, género, plataforma e ano!");
     return;
   }
 
@@ -168,8 +172,10 @@ function submeterJogo() {
 
 
 document.getElementById("btn-adicionar-toggle").addEventListener("click", function(){
+    const estaAberto = !document.getElementById("adicionar-jogos").classList.contains("hidden");
     document.getElementById("adicionar-jogos").classList.toggle("hidden");
-    this.textContent = this.textContent === "➕ Adicionar Jogo" ? "✖ Fechar" : "➕ Adicionar Jogo";
+    this.textContent = this.textContent === "Adicionar Jogo" ? "Fechar" : "Adicionar Jogo";
+    if (estaAberto) limparFormulario();
 });
 
 
@@ -191,5 +197,29 @@ function editarJogo(id) {
     document.getElementById("input-rating").value = jogo.rating;
 
     document.getElementById("adicionar-jogos").classList.remove("hidden");
-    document.getElementById("btn-adicionar-toggle").textContent = "✖ Fechar";
+    document.getElementById("btn-adicionar-toggle").textContent = "Fechar";
+
+    document.getElementById("form-titulo").textContent = "Editar Jogo";
+    document.getElementById("btn-submeter").textContent = "Guardar alterações";
+}
+/*quando criava um jogo n ficava o historico mas quando editava um e dps queria criar aparecia o historico do edit*/
+function limparFormulario() {
+    document.getElementById("input-nome").value = "";
+    document.getElementById("input-imagem").value = "";
+    Array.from(document.getElementById("input-genero").options).forEach(o => o.selected = false);
+    document.getElementById("input-plataforma").value = "";
+    document.getElementById("input-ano").value = "";
+    document.getElementById("input-descricao").value = "";
+    document.getElementById("input-rating").value = "";
+    jogoAEditar = null;
+    document.getElementById("form-titulo").textContent = "Adicionar Jogos";
+    document.getElementById("btn-submeter").textContent = "Adicionar";
+}
+function mostrarPopup(mensagem) {
+    document.getElementById("popup-mensagem").textContent = mensagem;
+    document.getElementById("popup").classList.remove("hidden");
+}
+
+function fecharPopup() {
+    document.getElementById("popup").classList.add("hidden");
 }
