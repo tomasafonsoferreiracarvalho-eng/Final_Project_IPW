@@ -10,7 +10,7 @@
 <body>
     <header>
         <div class="title">
-        <h1>Biblioteca de jogos</h1>
+                <h1>Biblioteca de jogos</h1>
         </div>
         <div class="backnav">
         <nav>
@@ -25,51 +25,65 @@
     <section class="pesquisar-jogos">
         <input type="text" id="search" placeholder="Pesquisar Jogo...">
     </section>
-    <section id="filters">
-        <button data-genero="acao">Ação</button>
-        <button data-genero="desporto">Desporto</button>
-        <button data-genero="rpg">RPG</button>
-        <button data-genero="aventura">Aventura</button>
-        <button data-genero="historia">Historia</button>
-    </section>
-    <section id="filters-plataforma">
-        <button data-plataforma="pc">PC</button>
-        <button data-plataforma="ps4">PS4</button>
-        <button data-plataforma="ps5">PS5</button>
-        <button data-plataforma="xbox">XBOX</button>
-        <button data-plataforma="psp">PSP</button>
-        <button data-plataforma="nintendo">Nintendo Switch</button>
-        <button data-plataforma="ps3">PS3</button>
-    </section>
-    <section id="toggle-section">
-        <button id="btn-adicionar-toggle">Adicionar Jogo</button>
-    </section>
-    <section id="adicionar-jogos" class="hidden">
-        <h3 id="form-titulo">Adicionar Jogos</h3>
-        <input type="text" id="input-nome" placeholder="Nome">
-        <input type="file" id="input-imagem" accept="image/*">
-        <select id="input-genero" multiple>
-            <option value="acao">Ação</option>
-            <option value="rpg">RPG</option>
-            <option value="desporto">Desporto</option>
-            <option value="aventura">Aventura</option>
-            <option value="historia">Historia</option>
-        </select>
-        <input type="text" id="input-plataforma" placeholder="Plataformas (ex: pc, ps5)">
-        <input type="number" id="input-ano" placeholder="Ano" step=""0.1 min="1900">
-        <input type="text" id="input-descricao" placeholder="Descrição">
-        <input type="number" id="input-rating" placeholder="Rating (0-10)" step="0.1" min="0" max="10">
-        <button onclick="submeterJogo()">Adicionar</button>
-    </section>
-    <section id="games-container">
-    
-
-
-
-    </section>
+    <!-- Layout principal: esquerda (jogos) + direita (filtros) -->
+    <div id="layout-principal">
+        <!-- COLUNA ESQUERDA -->
+        <div id="coluna-jogos">
+            <section id="toggle-section">
+                <button id="btn-adicionar-toggle">Adicionar Jogo</button>
+            </section>
+            <section id="adicionar-jogos" class="hidden">
+                <h3 id="form-titulo">Adicionar Jogos</h3>
+                <input type="text" id="input-nome" placeholder="Nome">
+                <input type="file" id="input-imagem" accept="image/*">
+                <select id="input-genero" multiple>
+                    <option value="acao">Ação</option>
+                    <option value="rpg">RPG</option>
+                    <option value="desporto">Desporto</option>
+                    <option value="aventura">Aventura</option>
+                    <option value="historia">Historia</option>
+                </select>
+                <select id="input-plataforma" multiple>
+                    <option value="ps4">PS4</option>
+                    <option value="ps5">PS5</option>
+                    <option value="pc">PC</option>
+                    <option value="xbox">XBOX</option>
+                    <option value="psp">PSP</option>
+                    <option value="nintendo">NINTENDO SWITCH</option>
+                    <option value="ps3">PS3</option>
+                </select>
+                <input type="number" id="input-ano" placeholder="Ano" step="1" min="1900">
+                <input type="text" id="input-descricao" placeholder="Descrição">
+                <input type="number" id="input-rating" placeholder="Rating (0-10)" step="0.1" min="0" max="10">
+                <button id="btn-submeter" onclick="submeterJogo()">Adicionar</button>
+            </section>
+            <section id="games-container"></section>
+        </div>
+        <!-- COLUNA DIREITA: filtros -->
+        <aside id="coluna-filtros"> <!--contem infos secundarias barras laterais, anuncios, ...-->
+            <h4>Género</h4>
+            <div id="filters">
+                <button data-genero="acao">Ação</button>
+                <button data-genero="desporto">Desporto</button>
+                <button data-genero="rpg">RPG</button>
+                <button data-genero="aventura">Aventura</button>
+                <button data-genero="historia">Historia</button>
+            </div>
+            <h4>Plataforma</h4>
+            <div id="filters-plataforma">
+                <button data-plataforma="pc">PC</button>
+                <button data-plataforma="ps4">PS4</button>
+                <button data-plataforma="ps5">PS5</button>
+                <button data-plataforma="xbox">XBOX</button>
+                <button data-plataforma="psp">PSP</button>
+                <button data-plataforma="nintendo">NINTENDO SWITCH</button>
+                <button data-plataforma="ps3">PS3</button>
+            </div>
+        </aside>
+    </div>
     <script src="scriptJogos.js"></script>
-    <footer>
-        <p>Copyright Tomás Carvalho</p>
+    <footer class="meio-footer">
+        <p>2026 Copyright Tomás Carvalho | Direitos Reservados</p>
     </footer>
     <div id="popup" class="hidden">
         <p id="popup-mensagem"></p>

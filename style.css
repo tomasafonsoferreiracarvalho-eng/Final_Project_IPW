@@ -32,37 +32,44 @@ body {
 }
 header {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    justify-content: space-between; /* titulo a esquersa, nav a direita*/
     align-items: center;
+    background-color: #1e1e1e;
+    padding: 0 20px;
 }
 .backnav {
-    background-color: #1e1e1e;
-    width: 100%;
-    display: flex;
+    background-color: transparent;
+    width: auto;
+    /*display: flex;
     justify-content: center;
-    margin-bottom: 10px;
+    margin-bottom: 10px;*/
 }
 .title {
+    margin: 0;/*
     width: 100%;
     display: flex;
-    flex-direction: column;
+    flex-direction: left;
     align-items: center;
-    transition: 0.3s;
+    transition: 0.3s;*/
 }
 .title:hover {
-    background-color: grey;
-    color:#f1f1f1;
+    color: rgb(187, 78, 78);
 }
 section {
-    margin-bottom: 20px;
     max-width:900px;
     margin: 0 auto 20px auto;
-    border-bottom: 1px solid #333;
-    padding-bottom: 20px;
+}
+.meio-footer {
+    position: relative;
+    margin: 200px auto; /*ajusta a posição inicial*/
+    width: fit-content;
+    color: #7c3aed;
 }
 
 /*jogos.html*/
 .pesquisar-jogos input {
+    margin-top: 20px;
     border:2px solid #444;
     background-color: #1e1e1e;
     color: #f1f1f1;
@@ -170,6 +177,10 @@ section h3 {
     gap: 10px;
     justify-content: center;
     align-items: center;
+    background-color: #1a1a2e;
+    border: 1px solid #333;
+    border-radius: 10px;
+    padding: 12px;
 }
 #filters button {
     background-color: #1e1e1e;
@@ -227,6 +238,10 @@ section h3 {
     flex-wrap: wrap;
     gap: 10px;
     justify-content: center;
+    background-color: #1a1a2e;
+    border: 1px solid #333;
+    border-radius: 10px;
+    padding: 12px;
 }
 #filters-plataforma button {
     background-color: #1e1e1e;
@@ -272,4 +287,91 @@ section h3 {
     border-radius: 10px;
     z-index: 999;
     text-align: center;
+}
+/* ====== LAYOUT DUAS COLUNAS (jogos.html) ====== */
+#layout-principal {
+    display: flex;
+    gap: 0;
+    max-width: 1200px;
+    margin: 0 auto;
+    align-items: flex-start;
+}
+
+/* Coluna esquerda - jogos */
+#coluna-jogos {
+    flex: 1;
+    min-width: 0;
+    padding-right: 20px;
+}
+
+/* Linha divisória vertical */
+#coluna-filtros {
+    width: 220px;
+    flex-shrink: 0;
+    border-left: 2px solid #444;
+    padding-left: 20px;
+    position: sticky;
+    top: 20px;
+}
+
+#coluna-filtros h4 {
+    color: #a259ff;
+    margin: 16px 0 8px 0;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+#coluna-filtros h4:first-child {
+    margin-top: 0;
+}
+
+/* Filtros na coluna direita ficam em coluna */
+#filters, #filters-plataforma {
+    flex-direction: column;
+    align-items: flex-start;
+    background-color: transparent;
+    border: none;
+    border-radius: 0;
+    padding: 0;
+    gap: 6px;
+}
+
+#filters button, #filters-plataforma button {
+    width: 100%;
+    text-align: left;
+}
+
+/* Jogos dentro da coluna esquerda sem max-width limitado */
+#coluna-jogos #games-container {
+    max-width: none;
+    margin: 0;
+    border-bottom: none;
+}
+
+#coluna-jogos #toggle-section,
+#coluna-jogos #adicionar-jogos {
+    max-width: none;
+    margin: 0 0 20px 0;
+}
+
+/* Mobile: volta a uma coluna */
+@media (max-width: 768px) {
+    #layout-principal {
+        flex-direction: column;
+    }
+    #coluna-filtros {
+        width: 100%;
+        border-left: none;
+        border-top: 2px solid #444;
+        padding-left: 0;
+        padding-top: 20px;
+    }
+    #filters, #filters-plataforma {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+    #filters button, #filters-plataforma button {
+        width: auto;
+    }
 }

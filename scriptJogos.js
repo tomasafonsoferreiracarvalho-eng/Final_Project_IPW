@@ -107,7 +107,8 @@ function submeterJogo() {
   const nome = document.getElementById("input-nome").value;
   const ficheiroImagem = document.getElementById("input-imagem").files[0];
   const genero = Array.from(document.getElementById("input-genero").selectedOptions).map(o => o.value).join(", ");
-  const plataforma = document.getElementById("input-plataforma").value;
+  const plataforma = Array.from(document.getElementById("input-plataforma").selectedOptions).map(o => o.value).join(", "); /*CORRIGIDO: era .nmap, agora igual ao genero*/
+
   const ano = document.getElementById("input-ano").value;
   const descricao = document.getElementById("input-descricao").value;
   const rating = document.getElementById("input-rating").value;
@@ -154,6 +155,11 @@ function submeterJogo() {
     return;
   }
 
+  if (!ficheiroImagem) {
+    mostrarPopup("Seleciona uma imagem para o jogo!");
+    return;
+  }
+
   const reader = new FileReader();
   reader.onload = function(e) {
     const imagem = e.target.result;
@@ -161,7 +167,8 @@ function submeterJogo() {
 
     document.getElementById("input-nome").value = "";
     document.getElementById("input-imagem").value = "";
-    document.getElementById("input-plataforma").value = "";
+    Array.from(document.getElementById("input-genero").options).forEach(o => o.selected = false);
+    Array.from(document.getElementById("input-plataforma").options).forEach(o => o.selected = false); /*CORRIGIDO: reset igual ao genero*/
     document.getElementById("input-ano").value = "";
     document.getElementById("input-descricao").value = "";
     document.getElementById("input-rating").value = "";
@@ -187,11 +194,18 @@ function editarJogo(id) {
     jogoAEditar = id;
 
     document.getElementById("input-nome").value = jogo.nome;
+
     const selectGenero = document.getElementById("input-genero");
     Array.from(selectGenero.options).forEach(option => {
         option.selected = jogo.genero.includes(option.value);
         });
-    document.getElementById("input-plataforma").value = jogo.plataforma.join(",");  /*para dar select de mais que um genero tenho de usar o ctrl enquando escolho todos*/
+
+    /*CORRIGIDO: plataforma agora igual ao genero, com forEach em vez de .join no .value*/
+    const selectPlataforma = document.getElementById("input-plataforma");
+    Array.from(selectPlataforma.options).forEach(option => {
+        option.selected = jogo.plataforma.includes(option.value);
+        });  /*para dar select de mais que uma plataforma tenho de usar o ctrl enquando escolho todos*/
+
     document.getElementById("input-ano").value = jogo.ano;
     document.getElementById("input-descricao").value = jogo.descricao;
     document.getElementById("input-rating").value = jogo.rating;
@@ -207,7 +221,7 @@ function limparFormulario() {
     document.getElementById("input-nome").value = "";
     document.getElementById("input-imagem").value = "";
     Array.from(document.getElementById("input-genero").options).forEach(o => o.selected = false);
-    document.getElementById("input-plataforma").value = "";
+    Array.from(document.getElementById("input-plataforma").options).forEach(o => o.selected = false); /*CORRIGIDO: reset com forEach igual ao genero*/
     document.getElementById("input-ano").value = "";
     document.getElementById("input-descricao").value = "";
     document.getElementById("input-rating").value = "";
