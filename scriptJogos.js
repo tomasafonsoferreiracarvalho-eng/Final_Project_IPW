@@ -262,9 +262,15 @@ function popularIndex() {
 
     const recentes = [...jogos].sort((a, b) => b.ano - a.ano).slice(0, 3);
     const top10 = [...jogos].sort((a, b) => b.rating - a.rating).slice(0, 5);
+    if (recentes.length === 0) {
+        divRecentes.innerHTML = "<p>Ainda não há jogos adicionados.</p>";
+        divTop10.innerHTML = "<p>Ainda não há jogos adicionados.</p>";
+        return;
+    }
 
     divRecentes.innerHTML = recentes.map(criarMiniCard).join("");
     divTop10.innerHTML = top10.map(criarMiniCard).join("");
+    
 }
 
 popularIndex();
@@ -277,7 +283,7 @@ emailjs.init("DfEWINeAfM9gOoBHz");
 
 const form = document.getElementById("contact-form");
 
-if (form) {  // ← adiciona esta verificação
+if (form) {  //verificação para n dar erro
     form.addEventListener("submit", function(event) {
         event.preventDefault();
 

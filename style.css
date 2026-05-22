@@ -38,6 +38,12 @@ form {
 #btn-enviar:hover {
     transform: scale(0.97)
 }
+#recentes, #top10 {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
 nav ul {
     display: flex;
     list-style: none;
@@ -125,6 +131,9 @@ section h3 {
     color: #a259ff;
 }
 /*sobre.html*/
+#ps4 {
+    text-decoration: none;
+}
 #pag-pessoal a{
     text-decoration: none;
     color:deeppink;
