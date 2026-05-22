@@ -32,7 +32,9 @@ function guardarJogo(lista){
 }
 
 let jogos = carregarJogos();
-renderizarJogos(jogos);
+if (document.getElementById("games-container")) {
+    renderizarJogos(jogos);
+}
 
 
 function adicionarJogo(nome, imagem, genero, plataforma, ano, descricao, rating){
@@ -69,7 +71,9 @@ function aplicarFiltros() {
 
     renderizarJogos(resultado);
 }//esta function usa o input e filtrar jogos
-document.getElementById("search").addEventListener("input", aplicarFiltros);/*input se pesquisar*/
+if (document.getElementById("search")) {
+    document.getElementById("search").addEventListener("input", aplicarFiltros);
+}/*input se pesquisar*/
 
 document.querySelectorAll("#filters [data-genero]").forEach(btn => {
     btn.addEventListener("click", function(){
@@ -174,12 +178,14 @@ function submeterJogo() {
 
 
 
-document.getElementById("btn-adicionar-toggle").addEventListener("click", function(){
-    const estaAberto = !document.getElementById("adicionar-jogos").classList.contains("hidden");
-    document.getElementById("adicionar-jogos").classList.toggle("hidden");
-    this.textContent = this.textContent === "Adicionar Jogo" ? "Fechar" : "Adicionar Jogo";
-    if (estaAberto) limparFormulario();
-});
+if (document.getElementById("btn-adicionar-toggle")) {
+    document.getElementById("btn-adicionar-toggle").addEventListener("click", function(){
+        const estaAberto = !document.getElementById("adicionar-jogos").classList.contains("hidden");
+        document.getElementById("adicionar-jogos").classList.toggle("hidden");
+        this.textContent = this.textContent === "Adicionar Jogo" ? "Fechar" : "Adicionar Jogo";
+        if (estaAberto) limparFormulario();
+    });
+}
 
 
 /*sem querer enganei me a escrever os atributos do jogo, sinceramente, ent tive de criar uma opc para os editar*/
@@ -266,25 +272,28 @@ popularIndex();
 
 /*----------------------(())--------------------*/
 /*forms do index.HTML*/
+// scriptJogos.js — linha ~269
 emailjs.init("DfEWINeAfM9gOoBHz");
 
 const form = document.getElementById("contact-form");
 
-form.addEventListener("submit", function(event) {
-    event.preventDefault();
+if (form) {  // ← adiciona esta verificação
+    form.addEventListener("submit", function(event) {
+        event.preventDefault();
 
-    emailjs.send("service_cx9yzch", "template_3clm451", {
-        nome: document.getElementById("nome").value,
-        email: document.getElementById("email").value,
-        mensagem: document.getElementById("mensagem").value
-    })
-    .then(() => {
-        alert("Mensagem enviada!");
-        form.reset();
-    })
-    .catch((error) => {
-        console.log(error);
-        alert("Erro ao enviar.");
+        emailjs.send("service_cx9yzch", "template_pney2zc", {
+            name: document.getElementById("nome").value,
+            email: document.getElementById("email").value,
+            message: document.getElementById("mensagem").value
+        })
+        .then(() => {
+            alert("Mensagem enviada!");
+            form.reset();
+        })
+        .catch((error) => {
+            console.log(error);
+            alert("Erro ao enviar.");
+        });
     });
-});
+}
 /*----------------------(())--------------------*/
