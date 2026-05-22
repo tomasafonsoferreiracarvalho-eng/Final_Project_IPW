@@ -1,5 +1,43 @@
 /*index.html*/
 /*guardar emojis ahahaha ➕ ✏️ ✖ ✖*/
+.contacto {
+    width: 60%;
+    margin: auto;
+    padding: 20px;
+}
+form {
+    display: flex;
+    flex-direction: column;
+}
+.contacto input,
+.contacto textarea {
+    margin-bottom: 15px;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #444;
+    background-color: #1e1e1e;
+    color: #f1f1f1;
+    outline: none;
+    transition: 0.3s;
+}
+.contacto textarea {
+    resize: vertical;
+}
+#btn-enviar {
+    background-color: #a259ff;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+#btn-enviar:hover {
+    background-color: #7c3aed;
+}
+#btn-enviar:hover {
+    transform: scale(0.97)
+}
 nav ul {
     display: flex;
     list-style: none;
@@ -27,7 +65,7 @@ nav a:hover {
     /*background-color: #141120;*/
 }
 body {
-     background-color: #121212;
+    background-color: #121212;
     color: #f1f1f1;
 }
 header {
@@ -68,6 +106,9 @@ section {
 }
 
 /*jogos.html*/
+button:active {
+    transform: scale(0.97);
+}
 .pesquisar-jogos input {
     margin-top: 20px;
     border:2px solid #444;
@@ -147,6 +188,7 @@ section h3 {
     padding: 10px;
     width: 200px;
     transition: 0.3s;
+    box-shadow: 0 0 10px rgba(162, 89, 255, 0.15);
 }
 .card-jogo:hover {
     transform: translateY(-5px); /*quando o rato esta em cima move o eixo vertical*/

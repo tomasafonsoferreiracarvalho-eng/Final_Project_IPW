@@ -5,7 +5,7 @@
         <link rel="stylesheet" href="style.css">
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="icon" href="imagens/i1.png">
+        <link rel="icon" href="imagens/ChatGPT Image 17_04_2026, 18_13_07.png">
     </head>
     <body>
         <header>
@@ -26,25 +26,36 @@
             <h3>Funcionalidades</h3>
             <ul id="funcionalidades">
                 <li>Pesquisar por jogos</li>
-                <li>Filtar por géneros</li>
+                <li>Filtrar por géneros</li>
                 <li>Explorar diferentes plataformas</li>
                 <li>Adicionar jogos</li>
                 <li>Dar rating</li>
             </ul>
         </section>    
         <section>
-            <h3>Recen Lançados</h3>
+            <h3>Recentemente Lançados</h3>
             <div id="recentes"></div>
         </section>
         <section>
             <h3>Top-10 jogos</h3>
             <div id="top10"></div>
         </section>
-        <section>
-        /*cria criar aqui uma especie de moral*/
+        <section class="contacto">
+            <h3>Entrar em contacto</h3>
+            <form id="contact-form">
+                <label for="nome">Nome:</label>
+                <input type="text" id="nome" name="nome" required>
+                <label for="email">E-mail:</label>
+                <input type="email" id="email" name="email" required>
+                <label for="mensagem">Mensagem:</label>
+                <textarea id="mensagem" name="mensagem" rows="5" required></textarea>
+                <button id="btn-enviar" type="submit">Enviar</button>
+            </form>
         </section>
         <footer class="meio-footer">
-            <p>2026 Copyright Tomás Carvalho | Direitos Reservados</p>
+            <p>&copy; 2026 Copyright Tomás Carvalho | Direitos Reservados</p>
         </footer>
+        <script src="scriptJogos.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     </body>
     </html>

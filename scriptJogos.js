@@ -33,11 +33,7 @@ function guardarJogo(lista){
 
 let jogos = carregarJogos();
 renderizarJogos(jogos);
-document.getElementById("search").addEventListener("input", function(){
-    const texto = this.value.toLowerCase();
-    const filtrados = jogos.filter( j => j.nome.toLowerCase().includes(texto));
-    renderizarJogos(filtrados);
-});/*input se pesquisar*/
+
 
 function adicionarJogo(nome, imagem, genero, plataforma, ano, descricao, rating){
     const novoJogo = {
@@ -56,24 +52,24 @@ function adicionarJogo(nome, imagem, genero, plataforma, ano, descricao, rating)
 }
 
 
+/*----------------------(())--------------------*//*isto estava aqui a causar uns problemas com os filtros, tive de reescrever a function...
+// tem tbm a haver com o bug descrito mais em cima^*/
+/*este bug esta resolvido ehehehehehehehe*/
 let filtroGenero = null;
 let filtroPlataforma = null;
 let jogoAEditar = null;
 
-
-function aplicarFiltros(){
+function aplicarFiltros() {
+    const texto = document.getElementById("search").value.toLowerCase();
     let resultado = jogos;
-    if (filtroGenero){
-        resultado = resultado.filter(j => j.genero.includes(filtroGenero));
-    }
-    if (filtroPlataforma){
-        resultado = resultado.filter(j => j.plataforma.includes(filtroPlataforma));
-    }
-    renderizarJogos(resultado);
-}/*esta function usa o input para filtrar os jogos*/
 
-/*----------------------(())--------------------*//*isto estava aqui a causar uns problemas com os filtros, tive de reescrever a function...
-// tem tbm a haver com o bug descrito mais em cima^*/
+    if (texto) resultado = resultado.filter(j => j.nome.toLowerCase().includes(texto));
+    if (filtroGenero) resultado = resultado.filter(j => j.genero.includes(filtroGenero));
+    if (filtroPlataforma) resultado = resultado.filter(j => j.plataforma.includes(filtroPlataforma));
+
+    renderizarJogos(resultado);
+}//esta function usa o input e filtrar jogos
+document.getElementById("search").addEventListener("input", aplicarFiltros);/*input se pesquisar*/
 
 document.querySelectorAll("#filters [data-genero]").forEach(btn => {
     btn.addEventListener("click", function(){
@@ -237,3 +233,58 @@ function mostrarPopup(mensagem) {
 function fecharPopup() {
     document.getElementById("popup").classList.add("hidden");
 }
+
+
+
+/*----------------------(())--------------------*/
+/*INDEX.HTML*/
+function popularIndex() {
+    const divRecentes = document.getElementById("recentes");
+    const divTop10 = document.getElementById("top10");
+
+    if (!divRecentes || !divTop10) return; // só corre no index.html
+
+    function criarMiniCard(jogo) {
+        return `
+        <div class="card-jogo">
+            <img src="${jogo.imagem}" alt="${jogo.nome}">
+            <h3>${jogo.nome}</h3>
+            <span>⭐ ${jogo.rating} | ${jogo.ano}</span>
+            <span>${jogo.genero.join(", ")}</span>
+        </div>`;
+    }
+
+    const recentes = [...jogos].sort((a, b) => b.ano - a.ano).slice(0, 3);
+    const top10 = [...jogos].sort((a, b) => b.rating - a.rating).slice(0, 5);
+
+    divRecentes.innerHTML = recentes.map(criarMiniCard).join("");
+    divTop10.innerHTML = top10.map(criarMiniCard).join("");
+}
+
+popularIndex();
+
+
+/*----------------------(())--------------------*/
+/*forms do index.HTML*/
+emailjs.init("DfEWINeAfM9gOoBHz");
+
+const form = document.getElementById("contact-form");
+
+form.addEventListener("submit", function(event) {
+    event.preventDefault();
+
+    emailjs.send("service_cx9yzch", "template_3clm451", {
+        nome: document.getElementById("nome").value,
+        email: document.getElementById("email").value,
+        mensagem: document.getElementById("mensagem").value
+    })
+    .then(() => {
+        alert("Mensagem enviada!");
+        form.reset();
+    })
+    .catch((error) => {
+        console.log(error);
+        alert("Erro ao enviar.");
+    });
+});
+/*----------------------(())--------------------*/
