@@ -42,7 +42,7 @@
         </section>
         <section class="contacto">
             <h3>Entrar em contacto</h3>
-            <form id="contact-form">
+            <form id="contact-form" action="contacto.php" method="POST">
                 <label for="nome">Nome:</label>
                 <input type="text" id="nome" name="nome" required>
                 <label for="email">E-mail:</label>
@@ -56,5 +56,9 @@
             <p>&copy; 2026 Copyright Tomás Carvalho | Direitos Reservados</p>
         </footer>
         <script src="scriptJogos.js"></script>
+        <div id="popup" class="hidden">
+            <p id="popup-mensagem"></p>
+            <button onclick="fecharPopup()">OK</button>
+        </div>
     </body>
     </html>
