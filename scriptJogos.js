@@ -95,11 +95,6 @@ document.querySelectorAll("#filters-plataforma [data-plataforma]").forEach(btn =
 /*----------------------(())--------------------*//*mais um bug encontrado quando estou a procura de um jogo, caso esteja num tipod e platafroma que
 tenha o jogo e passar para o genero que tenho o mesmo eles mostram o jogo mas caso vá para um gen que n o tenha e dep para o tipo que ele tem
 fica void, ou seja, vazio, como se n existisse, isso tbm e um problema com os filtros*/
-
-// Os 3 mais recentes
-const recentes = [...jogos].sort((a, b) => b.ano - a.ano).slice(0, 3);
-// Top 5 por rating
-const top10 = [...jogos].sort((a, b) => b.rating - a.rating).slice(0, 5);
 /*os 3 pontos criam uma copia do array é uma especie de espelhamento, o sort altera a array original, ent o ... serve para n mexer diretamente no orig*/
 /*----------------------(())--------------------*/
 
@@ -277,29 +272,5 @@ popularIndex();
 
 
 /*----------------------(())--------------------*/
-/*forms do index.HTML*/
-// scriptJogos.js — linha ~269
-emailjs.init("DfEWINeAfM9gOoBHz");
 
-const form = document.getElementById("contact-form");
-
-if (form) {  //verificação para n dar erro
-    form.addEventListener("submit", function(event) {
-        event.preventDefault();
-
-        emailjs.send("service_cx9yzch", "template_pney2zc", {
-            name: document.getElementById("nome").value,
-            email: document.getElementById("email").value,
-            message: document.getElementById("mensagem").value
-        })
-        .then(() => {
-            alert("Mensagem enviada!");
-            form.reset();
-        })
-        .catch((error) => {
-            console.log(error);
-            alert("Erro ao enviar.");
-        });
-    });
-}
 /*----------------------(())--------------------*/
