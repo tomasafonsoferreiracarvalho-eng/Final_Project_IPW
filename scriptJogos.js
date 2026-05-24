@@ -12,6 +12,7 @@ function criarCardJogo(jogo){
       <span>${jogo.genero.join(", ")} | ${jogo.plataforma.join(", ")} | ${jogo.ano}</span>
       <span>⭐ ${jogo.rating}</span>
       <button onclick="editarJogo(${jogo.id})">Editar</button>
+      <button class="btn-eliminar" onclick="eliminarJogo(${jogo.id})">Eliminar</button>
     </div>
   `;
 }/*esta funcao transforma o que for criado em html*/
@@ -19,8 +20,11 @@ function renderizarJogos(lista){
     const container = document.getElementById("games-container");
     container.innerHTML = lista.map(j => criarCardJogo(j)).join("");
 }/*esta funcao tal como o nome explicita ela renderiza o ecrã*/
-
-
+function eliminarJogo(id) {
+    jogos = jogos.filter(j => j.id !== id);
+    guardarJogo(jogos);
+    renderizarJogos(jogos);
+}/*ao por jogos apercebi me que faltava uma function para os eliminar ahahahga*/
 function carregarJogos(){
     const guardados = localStorage.getItem("jogos");
     return guardados ? JSON.parse(guardados) : jogosDefault;

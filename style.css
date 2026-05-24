@@ -130,6 +130,14 @@ section h3 {
     margin-top: 20px;
     color: #a259ff;
 }
+.card-jogo .btn-eliminar {
+    border-color: #e53e3e;
+    color: #e53e3e;
+}
+.card-jogo .btn-eliminar:hover {
+    background-color: #e53e3e;
+    color: #fff;
+}
 /*sobre.html*/
 #ps4 {
     text-decoration: none;
