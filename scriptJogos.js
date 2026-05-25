@@ -272,12 +272,12 @@ function popularIndex() {
     
 }
 
-popularIndex();
 
 
 /*----------------------(())--------------------*/
 // feedback do formulário PHP
 document.addEventListener("DOMContentLoaded", function() {
+    popularIndex();
 
 const urlParams = new URLSearchParams(window.location.search);
 if (urlParams.get("enviado") === "1") {
