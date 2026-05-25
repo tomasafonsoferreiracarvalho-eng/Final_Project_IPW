@@ -245,9 +245,9 @@ function fecharPopup() {
 /*INDEX.HTML*/
 function popularIndex() {
     const divRecentes = document.getElementById("recentes");
-    const divTop10 = document.getElementById("top10");
+    const divTop5 = document.getElementById("top5");
 
-    if (!divRecentes || !divTop10) return; // só corre no index.html
+    if (!divRecentes || !divTop5) return; // só corre no index.html
 
     function criarMiniCard(jogo) {
         return `
@@ -260,15 +260,15 @@ function popularIndex() {
     }
 
     const recentes = [...jogos].sort((a, b) => b.ano - a.ano).slice(0, 3);
-    const top10 = [...jogos].sort((a, b) => b.rating - a.rating).slice(0, 5);
+    const top5 = [...jogos].sort((a, b) => b.rating - a.rating).slice(0, 5);
     if (recentes.length === 0) {
         divRecentes.innerHTML = "<p>Ainda não há jogos adicionados.</p>";
-        divTop10.innerHTML = "<p>Ainda não há jogos adicionados.</p>";
+        divTop5.innerHTML = "<p>Ainda não há jogos adicionados.</p>";
         return;
     }
 
     divRecentes.innerHTML = recentes.map(criarMiniCard).join("");
-    divTop10.innerHTML = top10.map(criarMiniCard).join("");
+    divTop5.innerHTML = top5.map(criarMiniCard).join("");
     
 }
 
